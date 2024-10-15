@@ -10,15 +10,17 @@ public class Alertas {
 
     public static void main(String[] args) {
         //Declaramos as constantes e damoslle un valor
-        final double TEMPERATURE = 30;
-        final double HUMIDITY = 48;
+        double temperature = 30;
+        double humidity = 48;
+        final double ALERT_TEMPERATURE = 24;
+        final double ALERT_HUMIDITY = 50;
         
         //Usamos unha sentencia if else para comprobar se as constantes superan os valores establecidos
         //Primeiro, se ambas superan o valor
-        if (TEMPERATURE > 24 && HUMIDITY > 50) {
+        if (temperature > ALERT_TEMPERATURE && humidity > ALERT_HUMIDITY) {
             System.out.println("Alerta vermella");    
         }//Despois, se unha soa supera o valor
-        else if (TEMPERATURE > 24 || HUMIDITY > 50) {
+        else if (temperature > ALERT_TEMPERATURE || humidity > ALERT_HUMIDITY) {
             System.out.println("Alerta amarela");
         }//Se non supera ningun dos valores 
         else {
