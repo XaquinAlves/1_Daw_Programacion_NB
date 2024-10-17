@@ -11,15 +11,12 @@ import java.util.Scanner;
 public class Primos {
 
     public static void main(String[] args) {
-        /**
-         * Crease un scanner para leer o numero por teclado e unha variable int
-         * para gardalo
-         */
+        //Crea unha variable para gardar o número a evaluar
         Scanner scan = new Scanner(System.in);
         int number;
 
         /**
-         * Implementase un bucle do while principal que mantendra o programa en
+         * Un bucle do while principal que mantendra o programa en
          * execución ata que se introduzca 0
          */
         do {
@@ -27,16 +24,10 @@ public class Primos {
             System.out.println("Introduce un número enteiro(0 para salir): ");
             number = scan.nextInt();
 
-            /**
-             * Creamse unha variable int que servira de contador para carcular
-             * se o numero é primo
-             */
+            //Variable que servira de contador para carcular se é primo
             int i = 2;
 
-            /**
-             * Creamse un bucle while que comproba se o número ten divisores a
-             * parte del mesmo e a unidade
-             */
+            //Comproba se ten divisores a parte de el e a unidade
             while (number % i != 0 && i < number) {
                 i++;
             }
