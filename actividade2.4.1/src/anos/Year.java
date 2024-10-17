@@ -1,7 +1,8 @@
 package anos;
 
 /**
- * Esta clase representa un ano, cun atributo tipo boolean que representa se e bisiexto
+ * Esta clase representa un ano, cun atributo tipo boolean que representa se 
+ * é bisiexto
  * @author Xaquin Alves Gonzalez
  */
 public class Year {
@@ -12,17 +13,24 @@ public class Year {
     public Year(boolean leapYear) {
         this.leapYear = leapYear;
     }
-    /** @return se é ano bisiexto ou non, en boolean */
+    /** 
+     * Obten se este ano é bisiexto
+     * @return se é ano bisiexto ou non
+     */
     public boolean isLeapYear() {
         return leapYear;
     }
-    /** Establece se este ano é bisiexto
-     * @param leapYear se é bisiexto ou non (true/false)*/
+    /** 
+     * Establece se este ano é bisiexto
+     * @param leapYear se é bisiexto ou non (true/false)
+     */
     public void setLeapYear(boolean leapYear) {
         this.leapYear = leapYear;
     }
-    /** Este método mostra por pantalla os días do mes dado para este ano
-     @param month o mes do que se queiran saber os días*/
+    /** 
+     * Este método mostra por pantalla os días do mes dado para este ano
+     * @param month o mes do que se queiran saber os días
+     */
     public void showDaysOfMonth(int month) {
         //Primeiro, usamos un if para comprobar que o valor introducido é correcto
         if(month>12 || month<=0){
