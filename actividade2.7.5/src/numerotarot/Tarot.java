@@ -16,9 +16,9 @@ public class Tarot {
         //Crea unha instancia de Tarot para comprobar o funcionamento
         Tarot miTarot = new Tarot(10,9,1999);
         System.out.println(miTarot.getDay()+"/"+miTarot.getMonth()+"/"+miTarot.getYear());
-        System.out.println("É o ano bisiexto? "+miTarot.isLeapYear(1999));
-        System.out.println("É a data correcta? "+miTarot.checkDate(10, 9, 1999));
-        System.out.println("O número de Tarot é: "+miTarot.calculateTarot(10, 9, 1999));
+        System.out.println("É o ano bisiexto? "+miTarot.isLeapYear(miTarot.year));
+        System.out.println("É a data correcta? "+miTarot.checkDate(miTarot.day, miTarot.month, miTarot.year));
+        System.out.println("O número de Tarot é: "+miTarot.calculateTarot(miTarot.day, miTarot.month, miTarot.year));
 
     }
 
