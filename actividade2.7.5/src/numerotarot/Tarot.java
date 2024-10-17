@@ -13,7 +13,7 @@ public class Tarot {
     private int year;
 
     public static void main(String[] args) {
-
+        //Crea unha instancia de Tarot para comprobar o funcionamento
         Tarot miTarot = new Tarot(10,9,1999);
         System.out.println(miTarot.getDay()+"/"+miTarot.getMonth()+"/"+miTarot.getYear());
         System.out.println("É o ano bisiexto? "+miTarot.isLeapYear(1999));
@@ -23,6 +23,7 @@ public class Tarot {
     }
 
     /** 
+     * Crea tarot cunha fecha de nacemento determinada
      * @param day dia de nacemento
      * @param month mes de nacemento
      * @param year ano de nacemento
@@ -50,10 +51,7 @@ public class Tarot {
      * @return se a data introducida é correcta
      */
     public boolean checkDate(int day, int month, int year) {
-            /** 
-             * Crease un switch para comprobar se o mes é correcto
-             * e diferenciar meses de 30, 31 dias e febreiro 
-             */
+            //Comproba se o mes e correcto e os dias que pode ter
             switch (month) {
                 //Meses de 31 dias
                 case 1:case 3:case 5:case 7:case 8:case 10:case 12:
@@ -77,12 +75,12 @@ public class Tarot {
      * @param day dia de nacemento
      * @param month mes de nacemento
      * @param year ano de nacemento
-     * @return o numero de tarot para esta clase
+     * @return numero de tarot para esta clase
      */
     public int calculateTarot(int day, int month, int year) {
-        //Crease unha variable donde gardar a suma de day monthe e year
+        //Crea un int para gardar a suma de day month e year
         int number= day + month + year,result;
-        //Aplicamos o metodo sumNumbers en bucle ata que nos devolva un numero dun solo díxito
+        //Usa o metodo sumNumbers ata que devolva un valor dun so dixito
         do{
             result= sumNumbers(number);
             number = result;
@@ -93,11 +91,12 @@ public class Tarot {
     }
     /**
      * Obten a suma dos díxitos dun número dado
-     * @param number o numero do que se desexan sumar os díxitos
-     * @return a suma dos dixitos do numero introducido como parametro
+     * @param number numero do que se desexan sumar os díxitos
+     * @return suma dos dixitos do numero introducido como parametro
      */
     private int sumNumbers(int number){
         int result =0;            
+
         do{
             result += number%10;
             number /= 10;
@@ -105,27 +104,45 @@ public class Tarot {
         
         return result;
     }
-
+    /** 
+     * Obten o día de nacemento
+     * @return dia de nacemento
+     */
     public int getDay() {
         return day;
     }
-
+    /** 
+     * Establece un novo dia de nacemento
+     * @param day dia de nacemento
+     */
     public void setDay(int day) {
         this.day = day;
     }
-
+    /**
+     * Obten o mes de nacemento
+     * @return mes de nacemento
+     */
     public int getMonth() {
         return month;
     }
-
+    /**
+     * Establece un novo mes de nacemento
+     * @param month mes de nacemento
+     */
     public void setMonth(int month) {
         this.month = month;
     }
-
+    /**
+     * Obten o ano de nacemento
+     * @return ano de nacemento
+     */
     public int getYear() {
         return year;
     }
-
+    /**
+     * Establece un novo ano de nacemento
+     * @param year ano de nacemento
+     */
     public void setYear(int year) {
         this.year = year;
     }
