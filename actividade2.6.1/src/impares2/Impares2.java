@@ -3,6 +3,7 @@ package impares2;
 /**
  *Este programa mostra por pantalla os 10 primeiros impares usando un bucle
  * do while e unha sentencia if
+ * 
  * @author Xaquin Alves Gonzalez
  */
 public class Impares2 {
