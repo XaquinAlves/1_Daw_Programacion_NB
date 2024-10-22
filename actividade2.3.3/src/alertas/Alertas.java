@@ -7,13 +7,15 @@ package alertas;
  * @author Xaquin Alves Gonzalez
  */
 public class Alertas {
-
+    //Declaramos as constantes e damoslle un valor    
+    public final static double ALERT_TEMPERATURE = 24;
+    public final static double ALERT_HUMIDITY = 50;
+    
     public static void main(String[] args) {
-        //Declaramos as constantes e damoslle un valor
+        //Variables para gardar temperatura e humidade
         double temperature = 30;
         double humidity = 48;
-        final double ALERT_TEMPERATURE = 24;
-        final double ALERT_HUMIDITY = 50;
+
         
         //Usamos unha sentencia if else para comprobar se as constantes superan os valores establecidos
         //Primeiro, se ambas superan o valor
