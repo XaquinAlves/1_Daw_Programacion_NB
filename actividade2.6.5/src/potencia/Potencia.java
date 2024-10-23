@@ -10,8 +10,8 @@ public class Potencia {
 
     public static void main(String[] args) {
         /**
-         * Creanse duas variables int na que gardar os valores coas que se opera
-         * e unha para o resultado IMPORTANTE: a variable result debe empezar a
+         * Crea dous int nos que gardar os valores coas que se opera
+         * e un para o resultado IMPORTANTE: a variable result debe empezar a
          * execución con 1 como valor asignado para que o programa funcione
          */
         int number1, number2, result = 1;
