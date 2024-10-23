@@ -13,6 +13,7 @@ public class Adivinas {
     /**
      * Pide por teclado o maximo e os intentos ao usuario e executa o xogo con
      * estes parametros
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         
@@ -53,7 +54,7 @@ public class Adivinas {
         //Xera o numero a adiviñar
         int number = getRandom(MAX), guess, i = 0;
         
-        System.out.println("Estoy pensando en un número menor que: "+MAX);
+        System.out.println("Estoy pensando en un número,desde 0 y menor que: "+MAX);
         
         //Executase mentres queden intentos e non se acerte o numero
         do {
