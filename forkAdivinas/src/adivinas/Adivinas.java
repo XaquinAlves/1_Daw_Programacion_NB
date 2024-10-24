@@ -39,17 +39,22 @@ public class Adivinas {
 
         //Executase mentres queden intentos e non se acerte o numero
         do {
-            
+
             System.out.print("Introduce el numero en el que crees que pienso: ");
             guess = scan.nextInt();
             scan.nextLine();
-            
+            while (guess >= MAX) {
+                System.out.println("Ese número es mayor al permitido, introduce un numero menor que "+MAX+":");
+                guess = scan.nextInt();
+                scan.nextLine();
+            }
+
             i++;
-            
-            if(guess != number){
+
+            if (guess != number) {
                 System.out.println("Fallaste");
             }
-            
+
         } while (guess != number && i < tries);
 
         //Comproba se a salida do bucle foi por acerto ou por intentos gastados
