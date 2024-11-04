@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author Xaquin Alves Gonzalez
  */
 public class Marks {
-
+    //Garda notas de varios alumnos
     private int[] marks;
 
     /**
