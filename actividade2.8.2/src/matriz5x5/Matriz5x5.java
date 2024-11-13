@@ -8,12 +8,12 @@ package matriz5x5;
 public class Matriz5x5 {
 
     public static void main(String[] args) {
-        //Variable na que gardaremos o valor a mostrar
-        int x;
+
         
         //Recorre as columnas 
         for(int i=10;i > 5;i--){
-            x = i;
+            //Variable na que gardaremos o valor a mostrar
+            int x = i;
             //Recorre as filas
             for(int j=0; j < 5; j++){                
                 
@@ -22,6 +22,14 @@ public class Matriz5x5 {
             }
             System.out.println("");
         }
+        
+        /**
+         * SUXERENCIA DE SOLUCION
+         * for (int i=10; i>=6; i--) {
+         *      for (int j=0; j<5; j++) {
+         *          System.out.print(i-j+" ");} 
+         *      System.out.println();}
+         */
     }
     
 }
