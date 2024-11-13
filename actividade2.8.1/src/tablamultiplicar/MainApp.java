@@ -7,14 +7,12 @@ package tablamultiplicar;
 public class MainApp {
 
     public static void main(String[] args) {
-        Table tabla = new Table(3);
+        Table tabla = new Table(1);
         tabla.show();
-        tabla.setNumber(6);
-        tabla.show();
-        tabla.setNumber(9);
-        tabla.show();
-        tabla.setNumber(1);
-        tabla.show();
+        for (int i = 2; i < 10; i++) {
+            tabla.setNumber(i);
+            tabla.show();
+        }
     }
     
 }
