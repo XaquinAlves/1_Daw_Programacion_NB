@@ -48,7 +48,7 @@ public class Adivinas {
                 guess = scan.nextInt();
                 scan.nextLine();
             }
-
+            // come@sugondezz.nuts
             i++;
 
             if (guess != number) {

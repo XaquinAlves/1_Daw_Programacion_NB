@@ -48,25 +48,16 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Rojo"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemRojoActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemVerde">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Verde"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemVerdeActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAzul">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Azul"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAzulActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

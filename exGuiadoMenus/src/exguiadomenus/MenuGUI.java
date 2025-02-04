@@ -72,27 +72,12 @@ public class MenuGUI extends javax.swing.JFrame {
         jMenuColores.setText("Colores");
 
         jMenuItemRojo.setText("Rojo");
-        jMenuItemRojo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemRojoActionPerformed(evt);
-            }
-        });
         jMenuColores.add(jMenuItemRojo);
 
         jMenuItemVerde.setText("Verde");
-        jMenuItemVerde.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemVerdeActionPerformed(evt);
-            }
-        });
         jMenuColores.add(jMenuItemVerde);
 
         jMenuItemAzul.setText("Azul");
-        jMenuItemAzul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAzulActionPerformed(evt);
-            }
-        });
         jMenuColores.add(jMenuItemAzul);
 
         meuEdicion.add(jMenuColores);
@@ -125,18 +110,6 @@ public class MenuGUI extends javax.swing.JFrame {
     private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
-
-    private void jMenuItemRojoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRojoActionPerformed
-        this.getContentPane().setBackground(Color.RED);
-    }//GEN-LAST:event_jMenuItemRojoActionPerformed
-
-    private void jMenuItemVerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVerdeActionPerformed
-        this.getContentPane().setBackground(Color.GREEN);
-    }//GEN-LAST:event_jMenuItemVerdeActionPerformed
-
-    private void jMenuItemAzulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAzulActionPerformed
-        this.getContentPane().setBackground(Color.BLUE);
-    }//GEN-LAST:event_jMenuItemAzulActionPerformed
 
     /**
      * @param args the command line arguments
