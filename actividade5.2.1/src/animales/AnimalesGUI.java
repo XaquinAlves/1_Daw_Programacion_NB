@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package animales;
 
 import javax.swing.JOptionPane;
 
 /**
+ * Esta clase crea unha xanela con 3 opcions(can, gato, galo) e un boton que o
+ * pulsalo crea un diálogo co son que fai o animal seleccionado
  *
- * @author xaquin.alvesgonzalez
+ * @author Xaquin Alves Gonzalez
  */
 public class AnimalesGUI extends javax.swing.JFrame {
 
@@ -99,17 +97,21 @@ public class AnimalesGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Crea un JDialog con unha mensaxe dependendo da opcion seleccionada
+     *
+     * @param evt
+     */
     private void jButtonFalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFalarActionPerformed
-       String mensage = "";
-        if(jRadioButtonCan.isSelected()){
+        String mensage = "";
+        if (jRadioButtonCan.isSelected()) {
             mensage = "GUAU!";
-        }else if(jRadioButtonGato.isSelected()){
+        } else if (jRadioButtonGato.isSelected()) {
             mensage = "miau";
-        }else if(jRadioButtonGalo.isSelected()){
+        } else if (jRadioButtonGalo.isSelected()) {
             mensage = "KIKIRIKII!!!!";
         }
-        
+
         JOptionPane.showMessageDialog(jDialogMensaxe, mensage);
     }//GEN-LAST:event_jButtonFalarActionPerformed
 
@@ -138,6 +140,7 @@ public class AnimalesGUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AnimalesGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
