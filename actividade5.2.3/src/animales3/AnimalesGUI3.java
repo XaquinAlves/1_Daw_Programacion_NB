@@ -91,7 +91,7 @@ public class AnimalesGUI3 extends javax.swing.JFrame {
      */
     
     private void jButtonFalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFalarActionPerformed
-        String mensage = "";
+        String mensage;
         if(jComboBoxAnimal.getSelectedItem().toString().equals("Can")){
             mensage = "GUAU!";
         }else if(jComboBoxAnimal.getSelectedItem().toString().equals("Gato")){
