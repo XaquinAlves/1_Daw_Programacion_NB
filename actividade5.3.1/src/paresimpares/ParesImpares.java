@@ -1,12 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package paresimpares;
 
 /**
- *
- * @author xaquin.alvesgonzalez
+ * Esta clase amosa unha xanela con dous borons e unha combo box, que se enchera
+ *  numeros pares ou impares(dependendo do boton pulsado) entre 0 e 100
+ * 
+ * @author Xaquin Alves Gonzalez
  */
 public class ParesImpares extends javax.swing.JFrame {
 
@@ -76,6 +75,7 @@ public class ParesImpares extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
     /**
      * Chama a emptyNumbers() e despois a fillEven()
      *
