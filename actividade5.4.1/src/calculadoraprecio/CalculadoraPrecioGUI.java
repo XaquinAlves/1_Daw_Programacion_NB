@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class CalculadoraPrecioGUI extends javax.swing.JFrame {
 
+    private double tax = 1.21;
+    private double discount = 1;
+
     /**
      * Creates new form CalculadoraPrecioGUI
      */
@@ -28,13 +31,6 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogConfig = new javax.swing.JDialog();
-        jLabelIVA = new javax.swing.JLabel();
-        jLabelDiscount = new javax.swing.JLabel();
-        jTextFieldIVA = new javax.swing.JTextField();
-        jTextFieldDiscount = new javax.swing.JTextField();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabelUnidades = new javax.swing.JLabel();
         jLabelPrecio = new javax.swing.JLabel();
@@ -44,75 +40,6 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
         jButtonConfig = new javax.swing.JButton();
         jLabelTotal = new javax.swing.JLabel();
         jLabelResult = new javax.swing.JLabel();
-
-        jDialogConfig.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        jDialogConfig.setMinimumSize(new java.awt.Dimension(300, 225));
-        jDialogConfig.setModal(true);
-        jDialogConfig.setName("config"); // NOI18N
-        jDialogConfig.setPreferredSize(new java.awt.Dimension(300, 250));
-
-        jLabelIVA.setFont(new java.awt.Font("FreeMono", 1, 16)); // NOI18N
-        jLabelIVA.setText("IVA %:");
-
-        jLabelDiscount.setFont(new java.awt.Font("FreeMono", 1, 16)); // NOI18N
-        jLabelDiscount.setText("DESCUENTO %:");
-
-        jTextFieldIVA.setText("21");
-
-        jTextFieldDiscount.setText("0");
-
-        jButtonAceptar.setText("Aceptar");
-        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAceptarActionPerformed(evt);
-            }
-        });
-
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDialogConfigLayout = new javax.swing.GroupLayout(jDialogConfig.getContentPane());
-        jDialogConfig.getContentPane().setLayout(jDialogConfigLayout);
-        jDialogConfigLayout.setHorizontalGroup(
-            jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogConfigLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelDiscount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelIVA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButtonAceptar))
-                .addGap(20, 20, 20)
-                .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonCancelar)
-                    .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldDiscount)
-                        .addComponent(jTextFieldIVA, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        jDialogConfigLayout.setVerticalGroup(
-            jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogConfigLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelIVA)
-                    .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDiscount)
-                    .addComponent(jTextFieldDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jDialogConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAceptar)
-                    .addComponent(jButtonCancelar))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-
-        jDialogConfig.getAccessibleContext().setAccessibleDescription("");
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(300, 250));
 
@@ -138,11 +65,6 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
         jTextFieldUnidades.setText("0");
 
         jTextFieldPrecio.setText("0");
-        jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPrecioActionPerformed(evt);
-            }
-        });
 
         jButtonCalcular.setText("Calcular");
         jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -216,32 +138,18 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
-        double tax= 1.21, discount=1, result = 0;
-
+        double result = 0.0;
         try {
-            tax = (Double.parseDouble(jTextFieldIVA.getText()) / 100) + 1;
+            result = Double.parseDouble(jTextFieldPrecio.getText()) * 
+                    Double.parseDouble(jTextFieldUnidades.getText()) * tax * discount;
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, """
-                               No campo IVA introduciuse un valor non numerico.
-                               Establecerase o IVA por defecto(21%).""");
-            jTextFieldIVA.setText("21");
+                                                O valor introducino no campo Precio ou Unidades non é numérico.
+                                                Non se pode calcular""");
         }
-        try {
-            discount = 1 - (Double.parseDouble(jTextFieldDiscount.getText()) / 100);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, """
-                               No campo Desconto introduciuse un valor non numerico.
-                               Establecerase o Desconto por defecto(0%).""");
-            jTextFieldDiscount.setText("0");
-        }
-        try {
-            result = Double.parseDouble(jTextFieldPrecio.getText()) * Double.parseDouble(jTextFieldUnidades.getText()) * tax * discount;
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, """
-                               No campo Precio ou Unidades introduciuse un valor non numerico.
-                               Non se pode calcular.""");
-        }
+  
         jLabelResult.setText(String.valueOf(result));
+        
     }//GEN-LAST:event_jButtonCalcularActionPerformed
     /**
      * Amosa un dialogo no que se pode modificar o IVA e desconto aplicados
@@ -249,31 +157,47 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigActionPerformed
-        jDialogConfig.setVisible(true);
+        JDialogConfig dialogConfig = new JDialogConfig(this, true);
+        dialogConfig.setVisible(true);
+        
+        if (dialogConfig.isAccepted()) {
+            tax = (dialogConfig.getIva()/100) + 1;
+            discount = 1 - (dialogConfig.getDiscount()/100);
+        } 
     }//GEN-LAST:event_jButtonConfigActionPerformed
     /**
-     * Cerra o dialogo de configuracion establecendo os valores por defecto para
-     * IVA e Desconto
      *
-     * @param evt
+     * @return iva gardado
      */
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        jTextFieldIVA.setText("21");
-        jTextFieldDiscount.setText("0");
-        jDialogConfig.dispose();
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
-    /**
-     * Cerra o dialogo de configuracion mantendo os valores escritos
-     *
-     * @param evt
-     */
-    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        jDialogConfig.dispose();
-    }//GEN-LAST:event_jButtonAceptarActionPerformed
+    public double getTax() {
+        return tax;
+    }
 
-    private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPrecioActionPerformed
+    /**
+     * Establece o iva
+     *
+     * @param tax iva a establecer
+     */
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    /**
+     *
+     * @return desconto gardado
+     */
+    public double getDiscount() {
+        return discount;
+    }
+
+    /**
+     * Establece o desconto
+     *
+     * @param discount
+     */
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
 
     /**
      * @param args the command line arguments
@@ -311,20 +235,13 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCalcular;
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConfig;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDialog jDialogConfig;
-    private javax.swing.JLabel jLabelDiscount;
-    private javax.swing.JLabel jLabelIVA;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelResult;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JLabel jLabelUnidades;
-    private javax.swing.JTextField jTextFieldDiscount;
-    private javax.swing.JTextField jTextFieldIVA;
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldUnidades;
     // End of variables declaration//GEN-END:variables
