@@ -47,6 +47,7 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
 
         jDialogConfig.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         jDialogConfig.setMinimumSize(new java.awt.Dimension(300, 225));
+        jDialogConfig.setModal(true);
         jDialogConfig.setName("config"); // NOI18N
         jDialogConfig.setPreferredSize(new java.awt.Dimension(300, 250));
 
@@ -215,7 +216,7 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
-        double tax, discount, result = 0;
+        double tax= 1.21, discount=1, result = 0;
 
         try {
             tax = (Double.parseDouble(jTextFieldIVA.getText()) / 100) + 1;
@@ -223,7 +224,6 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, """
                                No campo IVA introduciuse un valor non numerico.
                                Establecerase o IVA por defecto(21%).""");
-            tax = 1.21;
             jTextFieldIVA.setText("21");
         }
         try {
@@ -232,7 +232,6 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, """
                                No campo Desconto introduciuse un valor non numerico.
                                Establecerase o Desconto por defecto(0%).""");
-            discount = 1;
             jTextFieldDiscount.setText("0");
         }
         try {
