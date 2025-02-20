@@ -168,7 +168,7 @@ public class Ecuacion2oGradoGUI extends javax.swing.JFrame {
      * @return solucion negativa
      */
     private double calculateNegative(double a, double b, double c) {
-        return ((-1)-Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a);
+        return ((-b)-Math.sqrt(Math.pow(b, 2) - 4*a*c))/(2*a);
     }
 
     /**
