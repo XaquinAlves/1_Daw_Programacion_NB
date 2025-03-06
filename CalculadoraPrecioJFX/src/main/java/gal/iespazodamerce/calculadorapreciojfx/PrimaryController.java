@@ -23,5 +23,21 @@ public class PrimaryController{
         totalField.setText(Double.toString(total));
     }
 
+    public double getIva() {
+        return iva;
+    }
 
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    
 }
