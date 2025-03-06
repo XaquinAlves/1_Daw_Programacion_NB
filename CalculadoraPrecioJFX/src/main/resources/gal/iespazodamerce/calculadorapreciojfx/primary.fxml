@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<GridPane prefHeight="219.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gal.iespazodamerce.calculadorapreciojfx.PrimaryController">
+   <columnConstraints>
+      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="81.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="2.0" prefWidth="182.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="97.0" minHeight="6.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="230.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Button fx:id="configButton" onAction="#switchToSecondary" text="Configuracion..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+      <Label text="Unidades: ">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Label>
+      <Label text="Precio:" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" onAction="#calculatePrice" text="Calcular" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+      <Label text="TOTAL" GridPane.rowIndex="2" />
+      <TextField fx:id="unitsField" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="precioField" layoutX="227.0" layoutY="34.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="totalField" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </TextField>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="10.0" top="20.0" />
+   </padding>
+</GridPane>
