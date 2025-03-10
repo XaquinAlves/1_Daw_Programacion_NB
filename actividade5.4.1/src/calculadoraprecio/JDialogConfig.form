@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="modal" type="boolean" value="true"/>
@@ -94,14 +94,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldIVA">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="21"/>
-      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jTextFieldIVA.setText(String.valueOf(tax));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldDiscount">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jTextFieldDiscount.setText(String.valueOf(discount));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAceptar">
       <Properties>

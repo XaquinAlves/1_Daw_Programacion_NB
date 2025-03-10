@@ -2,18 +2,14 @@ package calculadoraprecio;
 
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 /**
  *
  * @author xaquin.alvesgonzalez
  */
 public class CalculadoraPrecioGUI extends javax.swing.JFrame {
 
-    private double tax = 1.21;
-    private double discount = 1;
+    private double tax = 21;
+    private double discount = 0;
 
     /**
      * Creates new form CalculadoraPrecioGUI
@@ -141,7 +137,7 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
         double result = 0.0;
         try {
             result = Double.parseDouble(jTextFieldPrecio.getText()) * 
-                    Double.parseDouble(jTextFieldUnidades.getText()) * tax * discount;
+                    Double.parseDouble(jTextFieldUnidades.getText()) * (tax/100 + 1) * (1 - discount/100);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, """
                                                 O valor introducino no campo Precio ou Unidades non é numérico.
@@ -157,12 +153,12 @@ public class CalculadoraPrecioGUI extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigActionPerformed
-        JDialogConfig dialogConfig = new JDialogConfig(this, true);
+        JDialogConfig dialogConfig = new JDialogConfig(this, true, tax, discount);
         dialogConfig.setVisible(true);
         
         if (dialogConfig.isAccepted()) {
-            tax = (dialogConfig.getIva()/100) + 1;
-            discount = 1 - (dialogConfig.getDiscount()/100);
+            tax = dialogConfig.getIva();
+            discount = dialogConfig.getDiscount();
         } 
     }//GEN-LAST:event_jButtonConfigActionPerformed
     /**
