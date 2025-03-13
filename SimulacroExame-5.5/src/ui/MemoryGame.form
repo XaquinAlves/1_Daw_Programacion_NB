@@ -126,6 +126,7 @@
       <SubComponents>
         <Component class="javax.swing.JToggleButton" name="button11">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -142,6 +143,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button12">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -158,6 +160,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button13">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -174,6 +177,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button14">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -190,6 +194,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button21">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -206,6 +211,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button22">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -222,6 +228,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button23">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -238,6 +245,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button24">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -254,6 +262,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button31">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -270,6 +279,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button32">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -286,6 +296,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button33">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>
@@ -302,6 +313,7 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="button34">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 200]"/>
             </Property>

@@ -110,6 +110,7 @@ public class MemoryGame extends javax.swing.JFrame {
         jPanelCentral.setBackground(new java.awt.Color(153, 153, 153));
         jPanelCentral.setLayout(new java.awt.GridLayout(3, 4));
 
+        button11.setEnabled(false);
         button11.setMaximumSize(new java.awt.Dimension(200, 200));
         button11.setMinimumSize(new java.awt.Dimension(100, 100));
         button11.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -120,6 +121,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button11);
 
+        button12.setEnabled(false);
         button12.setMaximumSize(new java.awt.Dimension(200, 200));
         button12.setMinimumSize(new java.awt.Dimension(100, 100));
         button12.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -130,6 +132,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button12);
 
+        button13.setEnabled(false);
         button13.setMaximumSize(new java.awt.Dimension(200, 200));
         button13.setMinimumSize(new java.awt.Dimension(100, 100));
         button13.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -140,6 +143,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button13);
 
+        button14.setEnabled(false);
         button14.setMaximumSize(new java.awt.Dimension(200, 200));
         button14.setMinimumSize(new java.awt.Dimension(100, 100));
         button14.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -150,6 +154,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button14);
 
+        button21.setEnabled(false);
         button21.setMaximumSize(new java.awt.Dimension(200, 200));
         button21.setMinimumSize(new java.awt.Dimension(100, 100));
         button21.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -160,6 +165,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button21);
 
+        button22.setEnabled(false);
         button22.setMaximumSize(new java.awt.Dimension(200, 200));
         button22.setMinimumSize(new java.awt.Dimension(100, 100));
         button22.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -170,6 +176,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button22);
 
+        button23.setEnabled(false);
         button23.setMaximumSize(new java.awt.Dimension(200, 200));
         button23.setMinimumSize(new java.awt.Dimension(100, 100));
         button23.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -180,6 +187,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button23);
 
+        button24.setEnabled(false);
         button24.setMaximumSize(new java.awt.Dimension(200, 200));
         button24.setMinimumSize(new java.awt.Dimension(100, 100));
         button24.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -190,6 +198,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button24);
 
+        button31.setEnabled(false);
         button31.setMaximumSize(new java.awt.Dimension(200, 200));
         button31.setMinimumSize(new java.awt.Dimension(100, 100));
         button31.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -200,6 +209,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button31);
 
+        button32.setEnabled(false);
         button32.setMaximumSize(new java.awt.Dimension(200, 200));
         button32.setMinimumSize(new java.awt.Dimension(100, 100));
         button32.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -210,6 +220,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button32);
 
+        button33.setEnabled(false);
         button33.setMaximumSize(new java.awt.Dimension(200, 200));
         button33.setMinimumSize(new java.awt.Dimension(100, 100));
         button33.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -220,6 +231,7 @@ public class MemoryGame extends javax.swing.JFrame {
         });
         jPanelCentral.add(button33);
 
+        button34.setEnabled(false);
         button34.setMaximumSize(new java.awt.Dimension(200, 200));
         button34.setMinimumSize(new java.awt.Dimension(100, 100));
         button34.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -242,7 +254,7 @@ public class MemoryGame extends javax.swing.JFrame {
      */
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         JOptionPane.showConfirmDialog(this, "Esta seguro de sair do xogo?", "Sair",
-                                      JOptionPane.YES_NO_OPTION);
+                                      JOptionPane.YES_NO_OPTION);       
     }//GEN-LAST:event_jButtonSairActionPerformed
     /**
      * Ao usar o boton nova partida
@@ -348,16 +360,28 @@ public class MemoryGame extends javax.swing.JFrame {
 
         try {
             cards = cardGenerator.generateCards(nivel + 2, 4);
+            
+            for (int i = 0; i < toggleButtons.length; i++) {
+                for (int j = 0; j < toggleButtons[i].length; j++) {
+                    toggleButtons[i][j].setEnabled(true);
+                    toggleButtons[i][j].setSelected(false);
+                    
+                    if(nivel == 0 && i == 2){
+                        toggleButtons[i][j].setEnabled(false);
+                    }
+                }
+            }
+            
+            clearUnselectedButtons();
+            
+            lastSelectedCard = null;
+            points = 100;
+            showGameStatus();
         }
         catch (GenerateCardsException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Erro",
                                           JOptionPane.ERROR_MESSAGE);
         }
-
-        lastSelectedCard = null;
-        points = 100;
-        showGameStatus();
-
     }
 
     private void showGameStatus() {
@@ -368,20 +392,21 @@ public class MemoryGame extends javax.swing.JFrame {
     private void clearUnselectedButtons() {
         for (int i = 0; i < toggleButtons.length; i++) {
             for (int j = 0; j < toggleButtons[i].length; j++) {
-                toggleButtons[i][j].setText("");
+                if(toggleButtons[i][j].isEnabled() && !toggleButtons[i][j].isSelected()){
+                toggleButtons[i][j].setText("");}
             }
         }
     }
 
     private void checkGameOver() {
-        boolean cardsLeft = true;
+        boolean keepGoing = true;
 
-        for (int i = 0; i < cards.length; i++) {
-            for (int j = 0; j < cards[i].length; j++) {
-                cardsLeft = !cards[i][j].isHit();
+        for (int i = 0; i < cards.length && keepGoing; i++) {
+            for (int j = 0; j < cards[i].length && keepGoing; j++) {
+                keepGoing = cards[i][j].isHit();
             }
         }
-        if (!cardsLeft) {
+        if (keepGoing) {
             JOptionPane.showMessageDialog(this, "Noraboa! Acertaches todas as" +
                                           "cartas, conseguindo " + points + " puntos!");
         }

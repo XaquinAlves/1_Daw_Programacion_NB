@@ -14,7 +14,7 @@ public class ArrayCardGenerator implements CardGenerator {
 
     /**
      * Xera unha nova matriz de cartas
-     * 
+     *
      * @param rows numero de filas
      * @param cols numero de columnas
      * @return matriz de cartas
@@ -27,41 +27,25 @@ public class ArrayCardGenerator implements CardGenerator {
                     "Se queres tantas cartas, debes mercar a versión PRO");
         }
         else {
-            /*            Card[][] generatedCards = new Card[rows][cols];
-            for (int i = 0; i < (rows * cols) / 2; i++) {
-            Card[] textCardPair = {
-            new TextCard(words[i]),
-            new TextCard(words[i])
-            };
-            insertPair(textCardPair, generatedCards, rows, cols);
-            
-            int operation = new java.util.Random().nextInt(3);
-            Card[] mathCardPair = new Card[2];
-            switch (operation) {
-            case 0 -> {
-            mathCardPair[0] = new MathCard(operators1[i], operators1[i],
-            MathCard.SUM, 0);
-            mathCardPair[1] = new MathCard(operators1[i], operators2[2 - i],
-            MathCard.SUM, 1);
+            Card[][] generatedCards = new Card[rows][cols];
+            for (int i = 0; i < (rows * cols) / 4; i++) {
+                Card[] textCardPair = {
+                    new TextCard(words[i]),
+                    new TextCard(words[i])
+                };
+                insertPair(textCardPair, generatedCards, rows, cols);
+
+                Card[] mathCardPair = {
+                    new MathCard(operators1[i], operators2[i],
+                                 operations[i], 0),
+                    new MathCard(operators1[i], operators2[i],
+                                 operations[i], 1)
+                };
+
+                insertPair(mathCardPair, generatedCards, rows, cols);
             }
-            case 1 -> {
-            mathCardPair[0] = new MathCard(operators1[i], operators2[i],
-            MathCard.SUB, 0);
-            mathCardPair[1] = new MathCard(operators1[i], operators2[2 - i],
-            MathCard.SUB, 1);
-            }
-            case 2 -> {
-            mathCardPair[0] = new MathCard(operators1[i], operators2[i],
-            MathCard.MULT, 0);
-            mathCardPair[1] = new MathCard(operators1[i], operators2[2 - i],
-            MathCard.MULT, 1);
-            }
-            }
-            insertPair(mathCardPair, generatedCards, rows, cols);
-            }
-            return generatedCards;*/
+            return generatedCards;
         }
-        return null;
     }
 
     /**
