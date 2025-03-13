@@ -253,8 +253,11 @@ public class MemoryGame extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        JOptionPane.showConfirmDialog(this, "Esta seguro de sair do xogo?", "Sair",
-                                      JOptionPane.YES_NO_OPTION);       
+        if (JOptionPane.showConfirmDialog(this, "Esta seguro de sair do xogo?", "Sair",
+                                          JOptionPane.YES_NO_OPTION) ==
+                JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_jButtonSairActionPerformed
     /**
      * Ao usar o boton nova partida
@@ -360,20 +363,19 @@ public class MemoryGame extends javax.swing.JFrame {
 
         try {
             cards = cardGenerator.generateCards(nivel + 2, 4);
-            
+
             for (int i = 0; i < toggleButtons.length; i++) {
                 for (int j = 0; j < toggleButtons[i].length; j++) {
                     toggleButtons[i][j].setEnabled(true);
                     toggleButtons[i][j].setSelected(false);
-                    
-                    if(nivel == 0 && i == 2){
+                    toggleButtons[i][j].setText("");
+
+                    if (nivel == 0 && i == 2) {
                         toggleButtons[i][j].setEnabled(false);
                     }
                 }
             }
-            
-            clearUnselectedButtons();
-            
+
             lastSelectedCard = null;
             points = 100;
             showGameStatus();
@@ -381,6 +383,11 @@ public class MemoryGame extends javax.swing.JFrame {
         catch (GenerateCardsException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Erro",
                                           JOptionPane.ERROR_MESSAGE);
+            for (int i = 0; i < toggleButtons.length; i++) {
+                for (int j = 0; j < toggleButtons[i].length; j++) {
+                    toggleButtons[i][j].setEnabled(false);
+                }
+            }
         }
     }
 
@@ -392,8 +399,9 @@ public class MemoryGame extends javax.swing.JFrame {
     private void clearUnselectedButtons() {
         for (int i = 0; i < toggleButtons.length; i++) {
             for (int j = 0; j < toggleButtons[i].length; j++) {
-                if(toggleButtons[i][j].isEnabled() && !toggleButtons[i][j].isSelected()){
-                toggleButtons[i][j].setText("");}
+                if (toggleButtons[i][j].isEnabled() && !toggleButtons[i][j].isSelected()) {
+                    toggleButtons[i][j].setText("");
+                }
             }
         }
     }
