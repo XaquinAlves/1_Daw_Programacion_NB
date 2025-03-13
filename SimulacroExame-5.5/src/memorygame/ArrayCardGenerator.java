@@ -37,9 +37,9 @@ public class ArrayCardGenerator implements CardGenerator {
 
                 Card[] mathCardPair = {
                     new MathCard(operators1[i], operators2[i],
-                                 operations[i], 0),
+                                 operations[i], MathCard.OPERATION_CARD),
                     new MathCard(operators1[i], operators2[i],
-                                 operations[i], 1)
+                                 operations[i], MathCard.RESULT_CARD)
                 };
 
                 insertPair(mathCardPair, generatedCards, rows, cols);
