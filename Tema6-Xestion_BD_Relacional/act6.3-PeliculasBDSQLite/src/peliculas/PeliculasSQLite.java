@@ -34,6 +34,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  * Esta clase conectase coa BD bd_peliculas mediante JDCB, permitindo insertar,
@@ -41,28 +42,26 @@ import java.sql.ResultSet;
  *
  * @author Xaquin Alves González
  */
-public class PeliculasBD {
-
-    private static int numOfFilms = 0;
+public class PeliculasSQLite {
 
     public static void main(String[] args) {
 
         try (Connection c = DriverManager.getConnection("jdbc:sqlite:peliculas.db")) {
             System.out.println("Conexión realizada con exito");
-            try (Statement st = c.createStatement()){
-                String sql = "CREATE TABLE IF NOT EXISTS films (id INTEGER " 
+            try (Statement st = c.createStatement()) {
+                String sql = "CREATE TABLE IF NOT EXISTS films (id INTEGER "
                         + " PRIMARY KEY AUTOINCREMENT,title TEXT NOT NULL,year"
                         + "INTEGER NOT NULL);";
-                
-                st.executeUpdate(sql);
-            } catch (SQLException e){
+
+                st.executeUpdate(sql);                
+            } catch (SQLException e) {
                 System.out.println("Error creando tabla");
             }
 
-
             showMenu(c);
         } catch (SQLException ex) {
-            System.out.println("A conexión co servidor de bases de datos non se puido establecer");
+            System.out.println("A conexión co servidor de bases de datos non se"
+                    + "puido establecer");
         }
 
     }
@@ -82,7 +81,8 @@ public class PeliculasBD {
                            1.Insertar unha nova pelicula
                            2.Mostrar todas as películas
                            3.Buscar unha película
-                           4.Pechar a aplicación""");
+                           4.Borrar unha pelicula
+                           5.Pechar a aplicación""");
 
             System.out.print("Elección: ");
             choice = scan.nextInt();
@@ -109,12 +109,14 @@ public class PeliculasBD {
                     searchFilm(c, filmID);
                 }
                 case 4 ->
+                    deleteFilm(c);
+                case 5 ->
                     System.out.println("Ata a próxima!");
                 default ->
                     System.out.println("Opción non válida");
             }
             System.out.println();
-        } while (choice != 4);
+        } while (choice != 5);
     }
 
     /**
@@ -126,12 +128,10 @@ public class PeliculasBD {
      */
     private static void insertFilm(Connection c, String title, int year) {
 
-        try (PreparedStatement st = c.prepareStatement("INSERT INTO films VALUES(?,?,?)")) {
-            st.setInt(1, numOfFilms + 1);
-            st.setString(2, title);
-            st.setInt(3, year);
-            st.executeUpdate();
-            numOfFilms++;
+        try (PreparedStatement st = c.prepareStatement("INSERT INTO films (title,year) VALUES(?,?)")) {
+            st.setString(1, title);
+            st.setInt(2, year);
+            st.executeUpdate();;
         } catch (SQLException e) {
             System.out.println("Error coa BD");
         }
@@ -157,7 +157,7 @@ public class PeliculasBD {
 
                 }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
             System.out.println("Erro coa BD");
         }
 
@@ -187,6 +187,45 @@ public class PeliculasBD {
             }
         } catch (SQLException e) {
             System.out.println("Erro coa BD");
+        }
+    }
+
+    /**
+     * Amosa un JDialog que permite seleccionar unha pelicula, das gardas na BD,
+     * e borrala
+     */
+    private static void deleteFilm(Connection c) {
+        DeleteFilmsDialog dfd = new DeleteFilmsDialog(null, true);
+        //Preparamos o statement que obten as peliculas gardadas
+        try (Statement st = c.createStatement();) {
+            String sql = "SELECT * FROM films";
+            //Creamos o result set para procesar os datos
+            try (ResultSet rst = st.executeQuery(sql)) {
+                //Mentres queden peliculas sen gardar no combobox, garda a seguinte
+                while (rst.next()) {
+                    dfd.getjComboBoxFilms().addItem(rst.getString("title"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro coa BD");
+        }
+
+        dfd.setVisible(true);
+
+        if (dfd.isAcepted()) { //Se usou o boton borrar
+            //Comproba que hay unha pelicula seleccionada
+            if (dfd.getjComboBoxFilms().getSelectedIndex() != -1) {
+                try (Statement st = c.createStatement()) {
+
+                    String sql2 = "DELETE FROM films WHERE title = " + dfd.getjComboBoxFilms().getSelectedItem().toString();
+
+                    st.executeUpdate(sql2);
+                } catch (SQLException e) {
+                    System.out.println("Erro coa BD");
+                }
+            } else {//En caso de non ter nada seleccionado do ComboBox
+                JOptionPane.showMessageDialog(dfd, "Debes ter unha pelicula seleccionada");
+            }
         }
     }
 
