@@ -207,7 +207,7 @@ public class PeliculasSQLite {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Erro coa BD");
+            System.out.println("Erro coa BD, non se poden obter as peliculas");
         }
 
         dfd.setVisible(true);
@@ -217,11 +217,11 @@ public class PeliculasSQLite {
             if (dfd.getjComboBoxFilms().getSelectedIndex() != -1) {
                 try (Statement st = c.createStatement()) {
 
-                    String sql2 = "DELETE FROM films WHERE title = " + dfd.getjComboBoxFilms().getSelectedItem().toString();
-
+                    String sql2 = "DELETE FROM films WHERE title = '" + dfd.getjComboBoxFilms().getSelectedItem()+"';";
+                    
                     st.executeUpdate(sql2);
                 } catch (SQLException e) {
-                    System.out.println("Erro coa BD");
+                    System.out.println("Erro coa BD, non se puido borrar a pelicula");
                 }
             } else {//En caso de non ter nada seleccionado do ComboBox
                 JOptionPane.showMessageDialog(dfd, "Debes ter unha pelicula seleccionada");
