@@ -39,24 +39,11 @@ import java.sql.ResultSet;
  */
 public class PeliculasBD {
 
-    private static int numOfFilms = 0;
-
     public static void main(String[] args) {
 
         try (Connection c = DriverManager.getConnection("jdbc:mariadb://localhost:33006/bd_peliculas",
                 "admin", "daw2pass")) {
             System.out.println("Conexión realizada con exito");
-            //Esta consulta obten o ultimo ID insertado 
-            try (Statement st = c.createStatement()) {
-                String sql = "SELECT * FROM films ORDER BY id";
-
-                try (ResultSet rst = st.executeQuery(sql)) {
-                    if (rst.next()) {
-                        rst.last();
-                        numOfFilms = rst.getInt("id");
-                    }
-                }
-            }
 
             showMenu(c);
         } catch (SQLException ex) {
@@ -124,12 +111,10 @@ public class PeliculasBD {
      */
     private static void insertFilm(Connection c, String title, int year) {
 
-        try (PreparedStatement st = c.prepareStatement("INSERT INTO films VALUES(?,?,?)")) {
-            st.setInt(1, numOfFilms + 1);
-            st.setString(2, title);
-            st.setInt(3, year);
-            st.executeUpdate();
-            numOfFilms++;
+        try (PreparedStatement st = c.prepareStatement("INSERT INTO films (title,year) VALUES(?,?)")) {
+            st.setString(1, title);
+            st.setInt(2, year);
+            st.executeUpdate();;
         } catch (SQLException e) {
             System.out.println("Error coa BD");
         }
