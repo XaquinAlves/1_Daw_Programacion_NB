@@ -31,6 +31,8 @@ import incidencias.model.Incidence;
 import incidencias.model.User;
 import incidencias.persistence.IncidenceDB;
 import incidencias.persistence.UserDB;
+import incidencias.view.IncidenceAdmin;
+import incidencias.view.IncidenceDialog;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -95,7 +97,13 @@ public class IncidenceManager {
                 System.out.println("");
             } while (!rightCredentials);
             //Inicia sesion
-            showIncidencesMenu(user);
+            if (user.getType() == User.USER) {//Usuario normal
+                showIncidencesMenu(user);
+            } else {//Admin
+                IncidenceAdmin incidenceAdmin = new IncidenceAdmin();
+                incidenceAdmin.setVisible(true);
+                
+            }
             //Pregunta si quiere salir
             System.out.println("Quere pechar a aplicación?(s/n)");
             exit = scanner.nextLine().charAt(0);

@@ -70,4 +70,32 @@ public class IncidenceDB {
         incidence.setId(incidences.size());
         incidences.add(incidence);
     }
+
+    /**
+     * Obtiene todas las incidencias que estan en el estado indicado.
+     *
+     * @param status el estado, definido en constatntes en la clase
+     * {@link Incidence}.
+     * @return lista de incidencias.
+     */
+    public static ArrayList<Incidence> findByStatus(int status) {
+        ArrayList<Incidence> statusIncidences = new ArrayList<>();
+
+        for (Incidence incidence : incidences) {
+            if (incidence.getStatus() == status) {
+                statusIncidences.add(incidence);
+            }
+        }
+
+        return statusIncidences;
+    }
+
+    /**
+     * Actualiza la información de una incidencia. Por implementar.
+     *
+     * @param incidence la incidencia a actualizar.
+     */
+    public static void update(Incidence incidence) {
+
+    }
 }
