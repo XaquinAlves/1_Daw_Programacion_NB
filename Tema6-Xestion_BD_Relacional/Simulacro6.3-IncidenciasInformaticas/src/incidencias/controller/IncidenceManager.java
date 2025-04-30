@@ -32,7 +32,7 @@ import incidencias.model.User;
 import incidencias.persistence.IncidenceDB;
 import incidencias.persistence.UserDB;
 import incidencias.view.IncidenceAdmin;
-import incidencias.view.IncidenceDialog;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -50,9 +50,15 @@ public class IncidenceManager {
      * @param args
      */
     public static void main(String[] args) {
-        IncidenceManager manager = new IncidenceManager();
-
-        manager.showInitMenu();
+        try {
+            IncidenceManager manager = new IncidenceManager();
+            
+            manager.showInitMenu();
+            
+            UserDB.closeConnection();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
 
     }
 

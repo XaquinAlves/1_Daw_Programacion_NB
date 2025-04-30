@@ -28,14 +28,20 @@
 package incidencias.persistence;
 
 import incidencias.model.User;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
- * Clase UserBD: maneja la persistencia de los objetos de la clase
- * {@link User}
+ * Clase UserBD: maneja la persistencia de los objetos de la clase {@link User}
  *
  * @author Xaquin Alves González
  */
 public class UserDB {
+
+    private static Connection connection = null;
 
     /**
      * Usuarios guardados.
@@ -46,19 +52,56 @@ public class UserDB {
         new User("pedro", "abc123.", "Pedro", "Gomez", User.USER),
         new User("raquel", "abc123.", "Raquel", "Hazas", User.USER)
     };
-/**
- * Permite obtener un usuario por su Login.
- * 
- * @param username el Logind del usuario a buscar.
- * @return el User si existe, si no null.
- */
+
+    /**
+     * Permite obtener un usuario por su Login.
+     *
+     * @param username el Logind del usuario a buscar.
+     * @return el User si existe, si no null.
+     */
     public static User findByName(String username) {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
+        User user = null;
+        try (PreparedStatement pst = getConnection().prepareStatement("SELECT username, password, name, surname, type FROM User WHERE username = (?)")) {
+            pst.setString(1, username);
+            try (ResultSet rs = pst.executeQuery()) {
+                user = new User(rs.getString("username"),
+                        rs.getString("password"), rs.getString("name"),
+                        rs.getString("surname"), rs.getInt("type"));
+
                 return user;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-        return null;
+
+        return user;
+    }
+
+    /**
+     * Devuelve unha conexion con la BD, creandola si no existe
+     *
+     * @return conexion con la BD
+     * @throws SQLException si hay algun problema con la BD
+     */
+    public static Connection getConnection() throws SQLException {
+        if (connection == null) {
+            connection = DriverManager.getConnection("jdbc:sqlite:incidences.db");
+        }
+        return connection;
+    }
+
+    /**
+     * Cierra la conexión con la BD.
+     *
+     * @throws SQLException
+     */
+    public static void closeConnection() throws SQLException {
+        if (connection != null) {
+            connection.close();
+        }
     }
 
 }

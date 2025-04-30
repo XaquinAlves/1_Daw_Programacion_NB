@@ -28,7 +28,11 @@
 package incidencias.persistence;
 
 import incidencias.model.Incidence;
+import incidencias.model.User;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Clase IncidenceDB: maneja la persistencia de los objetos de la clase
@@ -56,6 +60,23 @@ public class IncidenceDB {
             if (incidence.getSender().getUsername().equals(username)) {
                 userIncidences.add(incidence);
             }
+        }
+
+        String statement = "SELECT id, description, computer, resolution, status, sender "
+                + "FROM Incidence WHERE sender = (?)";
+
+        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(statement)) {
+            pst.setString(1, username);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                userIncidences.add(new Incidence(rs.getInt("id"),
+                        rs.getString("description"), rs.getString("computer"), 
+                        rs.getString("resolution"), rs.getInt("status"),
+                        new User(rs.getString("sender"), null, null,null,0)));
+            }
+
+        } catch (SQLException ex) {
+
         }
 
         return userIncidences;
