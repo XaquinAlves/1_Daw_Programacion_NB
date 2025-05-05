@@ -49,11 +49,13 @@ public class IncidenceAdmin extends javax.swing.JFrame {
 
         DefaultListModel listModel = new DefaultListModel();
 
-        for (Incidence incidence : incidences) {
-            listModel.addElement(incidence.getSender().getName() + ": "
-                    + incidence.getDescription());
+        if (!incidences.isEmpty()) {
+            for (Incidence incidence : incidences) {
+                listModel.addElement(incidence.getSender().getName() + ": "
+                        + incidence.getDescription());
+            }
         }
-
+        
         jListIncidences.setModel(listModel);
 
     }

@@ -132,9 +132,11 @@ public class IncidenceManager {
                     + "As túas incidencias:");
             //Muestra las incidencias
             ArrayList<Incidence> incidences = IncidenceDB.findByUser(user.getUsername());
-            for (Incidence incidence : incidences) {
-                System.out.println(incidence);
-            }
+            if (!incidences.isEmpty()) {
+                for (Incidence incidence : incidences) {
+                    System.out.println(incidence);
+                }
+            } 
             System.out.println("");
             //Muestra el menu
             System.out.println("""

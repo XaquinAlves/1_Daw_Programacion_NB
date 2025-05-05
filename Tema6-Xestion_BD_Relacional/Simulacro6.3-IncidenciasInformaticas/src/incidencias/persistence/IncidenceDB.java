@@ -54,29 +54,31 @@ public class IncidenceDB {
      * @return lista de incidencias.
      */
     public static ArrayList<Incidence> findByUser(String username) {
+        //Para guardar las incidencias 
         ArrayList<Incidence> userIncidences = new ArrayList<>();
 
-        for (Incidence incidence : incidences) {
-            if (incidence.getSender().getUsername().equals(username)) {
-                userIncidences.add(incidence);
-            }
+        /*        for (Incidence incidence : incidences) {
+        if (incidence.getSender().getUsername().equals(username)) {
+        userIncidences.add(incidence);
         }
-
-        String statement = "SELECT id, description, computer, resolution, status, sender "
+        }*/
+        //Preparamos la consulta
+        String sql = "SELECT id, description, computer, resolution, status, sender "
                 + "FROM Incidence WHERE sender = (?)";
-
-        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(statement)) {
+        //Cargamos el nombre de usuario en la consulta
+        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(sql)) {
             pst.setString(1, username);
-
+            //Procesamos los resultados
             try (ResultSet rs = pst.executeQuery()) {
-                userIncidences.add(new Incidence(rs.getInt("id"),
-                        rs.getString("description"), rs.getString("computer"), 
-                        rs.getString("resolution"), rs.getInt("status"),
-                        new User(rs.getString("sender"), null, null,null,0)));
+                while (rs.next()) {                                       
+                    userIncidences.add(new Incidence(rs.getInt("id"),
+                            rs.getString("description"), rs.getString("computer"),
+                            rs.getString("resolution"), rs.getInt("status"),
+                            new User(rs.getString("sender"), null, null, null, 0)));
+                }
             }
-
         } catch (SQLException ex) {
-
+            System.out.println("Error: "+ex.getMessage());
         }
 
         return userIncidences;
@@ -88,8 +90,26 @@ public class IncidenceDB {
      * @param incidence incidencia a guardar.
      */
     public static void save(Incidence incidence) {
-        incidence.setId(incidences.size());
-        incidences.add(incidence);
+        /*        incidence.setId(incidences.size());
+        incidences.add(incidence);*/
+        //Preparamos la consulta
+        String sql = "INSERT INTO Incidence (description, computer,resolution, "
+                + "status, sender) VALUES ((?), (?), (?), (?), (?));";
+
+        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(sql)) {
+            //Cargamos los datos en la consulta
+            pst.setString(1, incidence.getDescription());
+            pst.setString(2, incidence.getComputer());
+            pst.setString(3, incidence.getResolution());
+            pst.setInt(4, incidence.getStatus());
+            pst.setString(5, incidence.getSender().getUsername());
+
+            //Insertamos los datos
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
 
     /**
@@ -102,10 +122,29 @@ public class IncidenceDB {
     public static ArrayList<Incidence> findByStatus(int status) {
         ArrayList<Incidence> statusIncidences = new ArrayList<>();
 
-        for (Incidence incidence : incidences) {
-            if (incidence.getStatus() == status) {
-                statusIncidences.add(incidence);
+        //Preparamos la consulta
+        String sql = "SELECT i.id, i.description, i.computer, i.resolution, "
+                + "i.status, u.username, u.name, u.surname "
+                + "FROM Incidence i "
+                + "JOIN User u ON  i.sender = u.username "
+                + "WHERE i.status = (?);";
+        //Creamos el statement
+        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(sql)) {
+            //Cargamos los datos para la consulta
+            pst.setInt(1, status);
+            //Procesamos los resultados
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {                    
+                    statusIncidences.add(new Incidence(rs.getInt("id"),
+                            rs.getString("description"), rs.getString("computer"),
+                            rs.getString("resolution"), rs.getInt("status"),
+                            new User(rs.getString("username"), null,
+                                    rs.getString("name"), rs.getString("surname"), 0)));
+                }
+                return statusIncidences;
             }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
 
         return statusIncidences;
@@ -117,6 +156,22 @@ public class IncidenceDB {
      * @param incidence la incidencia a actualizar.
      */
     public static void update(Incidence incidence) {
+        //Preparamos la consulta
+        String sql = "UPDATE Incidence "
+                + "SET status = (?), resolution = (?) "
+                + "WHERE id = (?);";
 
+        try (PreparedStatement pst = UserDB.getConnection().prepareStatement(sql)) {
+            //Cargamos los datos de la consulta
+            pst.setInt(1, incidence.getStatus());
+            pst.setString(2, incidence.getResolution());
+            pst.setInt(3, incidence.getId());
+            //Ejecutamos la actualizacion
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
+
 }

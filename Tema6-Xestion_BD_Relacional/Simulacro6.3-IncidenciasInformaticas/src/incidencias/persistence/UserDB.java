@@ -60,13 +60,21 @@ public class UserDB {
      * @return el User si existe, si no null.
      */
     public static User findByName(String username) {
+        //User que devolveremos
         User user = null;
-        try (PreparedStatement pst = getConnection().prepareStatement("SELECT username, password, name, surname, type FROM User WHERE username = (?)")) {
+        //Preparamos la consulta para obtener el User
+        try (PreparedStatement pst = getConnection().
+                prepareStatement("SELECT username, password, name, surname, "
+                        + "type FROM User WHERE username = (?)")) {
+            //Introducimos el username en el statement
             pst.setString(1, username);
+            //Obtenemos el resultado de las consultas
             try (ResultSet rs = pst.executeQuery()) {
-                user = new User(rs.getString("username"),
-                        rs.getString("password"), rs.getString("name"),
-                        rs.getString("surname"), rs.getInt("type"));
+                if (rs.next()) {
+                    user = new User(rs.getString("username"),
+                            rs.getString("password"), rs.getString("name"),
+                            rs.getString("surname"), rs.getInt("type"));
+                }
 
                 return user;
             } catch (SQLException ex) {
@@ -74,7 +82,7 @@ public class UserDB {
             }
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error: "+ex.getMessage());
         }
 
         return user;
