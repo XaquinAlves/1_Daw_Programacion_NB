@@ -39,6 +39,11 @@ import java.io.IOException;
  */
 public class CharReplacer {
 
+    /**
+     * Ejecuta la aplicación.
+     *
+     * @param args Ruta del Archivo, Caracter a remplazar, Caracter de remplazo.
+     */
     public static void main(String[] args) {
         if (args.length == 3) {
             try {
