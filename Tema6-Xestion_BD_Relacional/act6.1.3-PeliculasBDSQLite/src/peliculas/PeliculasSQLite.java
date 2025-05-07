@@ -127,7 +127,7 @@ public class PeliculasSQLite {
         try (PreparedStatement st = c.prepareStatement("INSERT INTO films (title,year) VALUES(?,?)")) {
             st.setString(1, title);
             st.setInt(2, year);
-            st.executeUpdate();;
+            st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error coa BD");
         }
