@@ -28,24 +28,44 @@
 package translator;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
 
 /**
+ * Clase Translator: traduce un fichero usando un diccionario localizado en un
+ * fichero de configuracion, y muestra la traduccion por pantalla.
  *
  * @author Xaquin Alves González
  */
 public class Translator {
 
+    /**
+     * Ejecuta la aplicacion.
+     *
+     * @param args Ruta del archivo
+     */
     public static void main(String[] args) {
-
+        if (args.length == 1) {
+            try {
+                translate(args[0]);
+            } catch (IOException ex) {
+                System.err.println("Erro: " + ex.getMessage());
+            }
+        } else {
+            System.out.println("Debe indicar a ruta do arquivo");
+        }
     }
 
+    /**
+     * Traduce el fichero en la ruta pasada como parametro, usando el
+     * diccionario situado en el directorio config.
+     *
+     * @param sourceFilePath Ruta del archivo a traducir.
+     * @throws IOException Si se produce un problema con el archivo.
+     */
     public static void translate(String sourceFilePath) throws IOException {
         InputStream input = Translator.class.getClassLoader().getResourceAsStream("config/dictionary.properties");
         if (input == null) {
@@ -57,15 +77,23 @@ public class Translator {
             // Obtemos o valor de dúas propiedades e pechamos o fluxo
             try (Scanner in = new Scanner(new BufferedReader(new FileReader(sourceFilePath)))) {
                 in.useDelimiter(" ");
-                
-                try (BufferedWriter out = new BufferedWriter(new FileWriter(sourceFilePath + ".translated"))) {
-                    
+
+                while (in.hasNext()) {
+                    String nextTk = in.next();
+                    String translation = prop.getProperty(nextTk);
+
+                    if (translation == null) {
+                        System.out.print(nextTk);
+                    } else {
+                        System.out.print(translation);
+                    }
+                    System.out.print(" ");
                 }
-                
+
             }
-           
+
             input.close();
-            
+
         }
     }
 
