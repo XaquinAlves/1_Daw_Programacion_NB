@@ -27,8 +27,14 @@
  */
 package translator;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Scanner;
 
 /**
  *
@@ -36,8 +42,31 @@ import java.util.Properties;
  */
 public class Translator {
 
-    public static void translate(String sourceFilePath) {
+    public static void main(String[] args) {
 
+    }
+
+    public static void translate(String sourceFilePath) throws IOException {
+        InputStream input = Translator.class.getClassLoader().getResourceAsStream("config/dictionary.properties");
+        if (input == null) {
+            System.out.println("Non se pode ler o ficheiro de propiedades");
+        } else {
+            // Cargamos as propiedades do ficheiro
+            Properties prop = new Properties();
+            prop.load(input);
+            // Obtemos o valor de dúas propiedades e pechamos o fluxo
+            try (Scanner in = new Scanner(new BufferedReader(new FileReader(sourceFilePath)))) {
+                in.useDelimiter(" ");
+                
+                try (BufferedWriter out = new BufferedWriter(new FileWriter(sourceFilePath + ".translated"))) {
+                    
+                }
+                
+            }
+           
+            input.close();
+            
+        }
     }
 
 }
