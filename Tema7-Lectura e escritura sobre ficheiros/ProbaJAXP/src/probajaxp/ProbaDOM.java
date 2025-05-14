@@ -50,23 +50,30 @@ public class ProbaDOM {
             PROCESAMENTO XML CON DOM
          */
         try {
+            //Instanciamos unha DocumentBuilderFactory para crear un DocumentBuilder
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
+            
             // Lectura do documento XML con DOM
             File file = new File("src/resources/biblioteca.xml");
             Document doc = builder.parse(file);
+            
             // Creación dunha ábore baleira
             Document doc2 = builder.newDocument();
+            
             System.out.println("Procesamento de XML con DOM");
             // Obtemos os nodos fillos do elemento raíz
             NodeList list = doc.getDocumentElement().getChildNodes();
+            
             for (int i = 0; i < list.getLength(); i++) {
                 // Se o nodo é un elemento, interpretámolo como elemento e
                 // mostramos a etiqueta os atributos
                 if (list.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    
                     Element e = (Element) list.item(i);
                     System.out.println("Elemento " + e.getTagName());
                     System.out.print("Atributos: ");
+                    
                     // Mostramos todos os atributos do elemento e o seu valor
                     for (int j = 0; j < e.getAttributes().getLength(); j++) {
                         Attr a = (Attr) e.getAttributes().item(j);
@@ -89,22 +96,28 @@ public class ProbaDOM {
             factory.setValidating(true);
             factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
                     "http://www.w3.org/2001/XMLSchema");
+            
             // Creamos o parser e establecemos a manexadora de erros
             DocumentBuilder builder = factory.newDocumentBuilder();
             builder.setErrorHandler(new MyErrorHandler());
+            
             // Lectura do documento XML con DOM
             File file = new File("src/resources/validacion-schema.xml");
             Document doc = builder.parse(file);
+            
             System.out.println("Procesamento de XML con DOM, validado con SCHEMA");
             // Obtemos os nodos fillos do elemento raíz
             NodeList list = doc.getDocumentElement().getChildNodes();
+            
             for (int i = 0; i < list.getLength(); i++) {
                 // Se o nodo é un elemento, interpretámolo como elemento e
                 // mostramos a etiqueta os atributos
                 if (list.item(i).getNodeType() == Node.ELEMENT_NODE) {
+                    
                     Element e = (Element) list.item(i);
                     System.out.println("Elemento " + e.getTagName());
                     System.out.print("Atributos: ");
+                    
                     // Mostramos todos os atributos do elemento e o seu valor
                     for (int j = 0; j < e.getAttributes().getLength(); j++) {
                         Attr a = (Attr) e.getAttributes().item(j);

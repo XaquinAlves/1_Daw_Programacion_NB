@@ -40,6 +40,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
+ * Clase de proba, para ver como se crea un XML con DOM.
  *
  * @author Xaquin Alves González
  */
@@ -51,23 +52,30 @@ public class TransformacionesDOM {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();
+
             // Xeramos o elemento raíz
             Element rootElement = doc.createElement("clientes");
             doc.appendChild(rootElement);
+
             // Engadimos un elemento
             Element client = doc.createElement("cliente");
             client.setAttribute("tipo", "basico");
             client.setTextContent("Roberto López García");
             rootElement.appendChild(client);
+
             // Xeramos a fonte DOM a partir do documento
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             DOMSource source = new DOMSource(doc);
+
             // Establecemos esta propiedade para identar o XML xerado
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
             // Xeramos un fluxo de saída sobre un ficheiro
             StreamResult result = new StreamResult("src/resources/clientes.xml");
+
             // Transformamos a fonte DOM sobre o fluxo
             transformer.transform(source, result);
+
         } catch (ParserConfigurationException | TransformerException ex) {
             System.err.println(ex.getMessage());
         }

@@ -53,14 +53,16 @@ public class SAXListener extends DefaultHandler {
             PROCESAMIENTO DE XML CON SAX
          */
         try {
-            // TODO code application logic here
+            //Instanciamos unha SAXParserFactory para crear un parser
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
 
             // Ficheiro a procesar
             File XMLfile = new File("src/resources/biblioteca.xml");
+            
             // Creamos o obxecto oínte
             DefaultHandler listener = new SAXListener();
+            
             // Lanzamos o proceso de parseo
             System.out.println("Procesamento de XML con SAX");
             parser.parse(XMLfile, listener);
@@ -72,14 +74,19 @@ public class SAXListener extends DefaultHandler {
             VALIDACION CON SAX CON SCHEMA
          */
         try {
+            //Instanciamos unha SAXParserFactory para crear un parser
             SAXParserFactory factory = SAXParserFactory.newInstance();
+            
             // Establecemos estas propidades para validar o documento XML
             factory.setNamespaceAware(true);
             factory.setValidating(true);
+            //Creamos o parser
             SAXParser parser = factory.newSAXParser();
+            
             // Esta propiedade só a establecemos se validamos o documento cun esquema
             parser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
                     "http://www.w3.org/2001/XMLSchema");
+            
             // Ficheiro a procesar
             File XMLfile = new File("src/resources/validacion-schema.xml");
             // Creamos o obxecto oínte
@@ -87,6 +94,7 @@ public class SAXListener extends DefaultHandler {
             // Lanzamos o proceso de parseo
             System.out.println("Procesamento de XML con SAX, Validado con SCHEMA");
             parser.parse(XMLfile, listener);
+            
         } catch (ParserConfigurationException | SAXException | IOException e) {
             System.out.println("Erro ao procesar o documento XML: " + e.getMessage());
         }
@@ -94,11 +102,15 @@ public class SAXListener extends DefaultHandler {
             VALIDACION CON SAX CON DTD
          */
         try {
+            //Instanciamos unha SAXParserFactory para crear un parser
             SAXParserFactory factory = SAXParserFactory.newInstance();
+            
             // Establecemos estas propidades para validar o documento XML
             factory.setNamespaceAware(true);
             factory.setValidating(true);
+            //Creamos o parser
             SAXParser parser = factory.newSAXParser();
+            
             // Ficheiro a procesar
             File XMLfile = new File("src/resources/validacion-dtd.xml");
             // Creamos o obxecto oínte
@@ -106,6 +118,7 @@ public class SAXListener extends DefaultHandler {
             // Lanzamos o proceso de parseo
             System.out.println("Procesamento de XML con SAX, Validado con DTD");
             parser.parse(XMLfile, listener);
+            
         } catch (ParserConfigurationException | SAXException | IOException e) {
             System.out.println("Erro ao procesar o documento XML: " + e.getMessage());
         }
