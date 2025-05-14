@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE lista_de_personas SYSTEM "validacion.dtd">
+<lista_de_personas>
+    <persona nacionalidad="español">
+        <nombre>José García</nombre>
+        <fecnac>25/04/1984</fecnac>
+        <telefono>670201256</telefono>
+        <telefono>968472898</telefono>
+        <sexo>Varón</sexo>
+    </persona>
+    <persona nacionalidad="español">
+        <nombre>Juan Antonio</nombre>
+        <fecnac>25/04/1984</fecnac>
+        <telefono>670201256</telefono>
+        <numss>2569587412569</numss>
+    </persona>
+</lista_de_personas>

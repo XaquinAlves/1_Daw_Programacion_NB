@@ -1,0 +1,8 @@
+<!ELEMENT lista_de_personas (persona+)>
+    <!ELEMENT persona (nombre, fecnac, telefono+, sexo?,numss*)>
+        <!ATTLIST persona nacionalidad CDATA #REQUIRED>
+        <!ELEMENT nombre (#PCDATA) >
+        <!ELEMENT fecnac (#PCDATA) >
+        <!ELEMENT telefono (#PCDATA)>
+        <!ELEMENT sexo (#PCDATA) >
+        <!ELEMENT numss (#PCDATA)>

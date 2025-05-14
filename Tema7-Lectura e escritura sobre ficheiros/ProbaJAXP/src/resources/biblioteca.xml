@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+    <libro ISBN="84-123-4567-9">
+        <autor>Rosalía de Castro</autor>
+        <titulo>Cantares Gallegos</titulo>
+        <precio>25.0</precio>
+        <categoria>Poesía</categoria>
+    </libro>
+    <libro ISBN="84-234-5678-0">
+        <autor>Castelao</autor>
+        <titulo>Sempre en Galiza</titulo>
+        <precio>30.0</precio>
+        <categoria>Ensayo</categoria>
+    </libro>
+    <libro ISBN="84-345-6789-1">
+        <autor>Vicente Risco</autor>
+        <titulo>O porco de pé</titulo>
+        <precio>20.0</precio>
+        <categoria>Ficción</categoria>
+    </libro>
+    <libro ISBN="84-456-7890-2">
+        <autor>Manuel Rivas</autor>
+        <titulo>A lingua das bolboretas</titulo>
+        <precio>35.0</precio>
+        <categoria>Relatos</categoria>
+    </libro>
+</biblioteca>

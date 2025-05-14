@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="library">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="isbn" type="xs:NMTOKEN" />
+                            <xs:element name="title" type="xs:string" />
+                            <xs:element name="autor" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="ref" type="xs:ID" use="required"></xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="author-ref">
+                                <!--Referencias
+                                a otros autores-->
+                                <xs:complexType>
+                                    <xs:attribute name="ref"
+                                        type="xs:IDREF" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <!--Elemento
+                        clave cuyo contenido no se puede repetir-->
+                        <xs:attribute name="identifier"
+                            type="xs:ID" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

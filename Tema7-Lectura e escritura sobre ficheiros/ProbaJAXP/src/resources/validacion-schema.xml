@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="validacion.xsd">
+    <book identifier="a123">
+        <isbn>8423366480</isbn>
+        <title>Las que no duermen</title>
+        <autor ref="a1">Dolores redondo</autor>
+        <author-ref ref="a1" />
+    </book>
+    <book identifier="b456">
+        <isbn>8408294466</isbn>
+        <title>545 recetas para triunfar</title>
+        <autor ref="a2">Karlos Arguiñano</autor>
+        <author-ref ref="a2" />
+    </book>
+    <book identifier="c789">
+        <isbn>8410299631</isbn>
+        <title>La isla de la Mujer Dormida</title>
+        <autor ref="a3">Arturo Perez Reverte</autor>
+        <author-ref ref="a3" />
+    </book>
+    <book identifier="d123">
+        <isbn>8408264370</isbn>
+        <title>Cocina fácil y rico: Más de 600 recetas para triunfar</title>
+        <author-ref ref="a2" />
+    </book>
+
+</library>
