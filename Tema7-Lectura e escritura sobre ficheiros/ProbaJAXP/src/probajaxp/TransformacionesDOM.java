@@ -27,6 +27,7 @@
  */
 package probajaxp;
 
+import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -69,9 +70,11 @@ public class TransformacionesDOM {
 
             // Establecemos esta propiedade para identar o XML xerado
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            //Creamos o archivo sobre o que escribiremos
+            File file = new File("src/resources/clientes.xml");
 
             // Xeramos un fluxo de saída sobre un ficheiro
-            StreamResult result = new StreamResult("src/resources/clientes.xml");
+            StreamResult result = new StreamResult(file);
 
             // Transformamos a fonte DOM sobre o fluxo
             transformer.transform(source, result);
