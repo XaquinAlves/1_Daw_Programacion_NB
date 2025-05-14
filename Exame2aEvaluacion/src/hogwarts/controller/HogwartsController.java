@@ -10,9 +10,7 @@ import hogwarts.persistence.HogwartsCharacterDB;
 import hogwarts.persistence.SubjectDB;
 import hogwarts.view.HogwartsView;
 import hogwarts.view.JFrameHogwarts;
-import hogwarts.view.TextAppHogwarts;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  * Xestiona as funcionalidades da aplicación

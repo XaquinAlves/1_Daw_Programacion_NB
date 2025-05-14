@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<personaxes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="potter.xsd">
+  <personaxe tipo="maxica">
+    <nome>Harry Potter</nome>
+    <hogwarts casa="Griffindor" posto="alumnado">
+      <codigo>A-1992-0001</codigo>
+      <curso>3</curso>
+      <quidditch>Buscador</quidditch>
+    </hogwarts>
+    <caracteristicas>Cicatriz en forma de raio na fronte.</caracteristicas>
+    <mascota animal="curuxa" idade="3">Hedwig</mascota>
+    <protagonista valor="true"/>
+  </personaxe>
+  
+  <personaxe tipo="maxica">
+    <nome>Hermione Granger</nome>
+    <hogwarts casa="Griffindor" posto="alumnado">
+      <codigo>A-1992-0002</codigo>
+      <curso>3</curso>
+    </hogwarts>
+    <caracteristicas>Moi observadora e boa estudante.</caracteristicas>
+    <mascota animal="gata">Crookshanks</mascota>
+    <protagonista valor="true"/>
+  </personaxe>
+  
+  <personaxe tipo="maxica">
+    <nome>Ron Weasley</nome>
+    <hogwarts casa="Griffindor" posto="alumnado">
+    <codigo>A-1992-0003</codigo>
+      <curso>3</curso>
+    </hogwarts>
+    <caracteristicas>Pelo roxo. Ten medo ás arañas.</caracteristicas>
+    <mascota animal="rata" idade="10">Scabbers</mascota>
+    <protagonista valor="true"/>
+  </personaxe>
+  
+  <personaxe>
+    <nome>Ginny Weasley</nome>
+    <hogwarts casa="Griffindor" posto="alumnado">
+      <codigo>A-1993-0001</codigo>
+      <curso>2</curso>
+    </hogwarts>
+    <caracteristicas>Pelo roxo.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>  
+  
+  <personaxe tipo="muggle">
+    <nome>Dudley Dursley</nome>
+    <caracteristicas>Maleducado.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+  <personaxe tipo="elfo">
+    <nome>Dobby</nome>
+    <caracteristicas>Viste con farrapos.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+  <personaxe tipo="maxica">
+    <nome>Albus Dumbledore</nome>
+    <hogwarts posto="direccion">
+      <codigo>P-001</codigo>
+    </hogwarts>
+    <caracteristicas>Longa barba.</caracteristicas>
+    <mascota animal="fénix">Fawkes</mascota>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+  <personaxe>
+    <nome>Minerva McGonagall</nome>
+    <hogwarts casa="Griffindor" posto="profesorado">
+      <codigo>P-002</codigo>
+    </hogwarts>
+    <caracteristicas>Moi estrita.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+    <personaxe>
+    <nome>Severus Snape</nome>
+    <hogwarts casa="Slytherin" posto="profesorado">
+      <codigo>P-003</codigo>
+    </hogwarts>
+    <caracteristicas>Apariencia escura.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+  <personaxe tipo="maxica">
+    <nome>Draco Malfoy</nome>
+    <hogwarts casa="Slytherin" posto="alumnado">
+      <codigo>A-1992-0004</codigo>
+      <curso>3</curso>
+    </hogwarts>
+    <caracteristicas>Inimigo de Harry Potter.</caracteristicas>
+    <protagonista valor="false"/>
+  </personaxe>
+  
+  <materias>
+    <materia codigo="MM-401">
+      <nome>Transformacións 4</nome>
+      <curso>4</curso>
+      <docente>P-002</docente>
+      <alumno>A-1992-0001</alumno>
+      <alumno>A-1992-0002</alumno>
+      <alumno>A-1992-0003</alumno>
+      <alumno>A-1992-0004</alumno>
+    </materia>
+    
+    <materia  codigo="MM-402">
+      <nome>Pocións 4</nome>
+      <curso>4</curso>
+      <docente>P-003</docente>
+      <alumno>A-1992-0001</alumno>
+      <alumno>A-1992-0002</alumno>
+      <alumno>A-1992-0003</alumno>
+      <alumno>A-1992-0004</alumno>
+    </materia>
+    
+    <materia codigo="MM-301">
+      <nome>Transformacións 3</nome>
+      <curso>3</curso>
+      <docente>P-002</docente>
+      <alumno>A-1993-0001</alumno>
+    </materia>
+  </materias>
+</personaxes>
